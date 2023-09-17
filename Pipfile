@@ -1,0 +1,70 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest-eventlet = "==1.0.0"
+pytest = "==7.2.0"
+coverage = "==6.5.0"
+flake8 = "==6.0.0"
+pre-commit = "==2.20.0"
+pydocstyle = "==6.1.1"
+pylint = "==2.15.8"
+mypy = "==0.991"
+pytest-dotenv = "==0.5.2"
+pytest-asyncio = "==0.20.3"
+asgi-lifespan = "==1.0.1"
+pytest-mock = "==3.6.1"
+sqlalchemy = { version = "==1.4.44", extras = ["mypy"] }
+types-requests = "==2.28.11.5"
+
+[packages]
+fastapi = { version = "==0.88.0", extras = ["all"] }
+nameko-sqlalchemy = "==1.5.0"
+alembic = "==1.8.1"
+sqlalchemy = "==1.4.44"
+psycopg2-binary = "==2.9.5"
+notification-myem-lib = { git = "git+https://${GITHUB_CREDENTIALS}@github.com/myenergymanager/notification-myem-lib.git", ref = "master" }
+myem-lib-python = { git = "git+https://${GITHUB_CREDENTIALS}@github.com/myenergymanager/myem-lib-python.git", ref = "develop" }
+fastapi-users = { version = "==10.2.1", extras = ["sqlalchemy"] }
+fastapi-users-db-sqlalchemy= "<5.0.0"
+cryptography = "==38.0.4"
+jwcrypto = "==1.4.2"
+nameko = "==3.0.0-rc11"
+sqlalchemy-utils = "==0.38.3"
+sqlalchemy-json = "==0.5.0"
+fastapi_pagination = "==0.9.1"
+sentry_sdk = { version = "==1.9.1", extras = ["fastapi", "sqlalchemy"] }
+
+graphql-server-core = "==2.0.0"
+graphene-sqlalchemy = "==2.3.0"
+graphene = "==2.1.9"
+graphql-core = "==2.3.2"
+graphql-relay = "==2.0.1"
+graphene-sqlalchemy-filter = "==1.13.0"
+Werkzeug = "==2.2.2"
+asyncpg = "==0.27.0"
+pandas = "==1.5.2"
+pydantic = "==1.10.2"
+nameko-http = "==0.1.7"
+dnspython = "==2.2.1"
+opentelemetry-instrumentation-requests = "==0.35b0"
+opentelemetry-instrumentation-nameko = "==0.5.1"
+opentelemetry-instrumentation-sqlalchemy = "==0.35b0"
+opentelemetry-distro = "==0.35b0"
+opentelemetry-exporter-jaeger = "==1.14.0"
+opentelemetry-instrumentation-fastapi = "==0.35b0"
+[pipenv]
+allow_prereleases = true
+
+[requires]
+python_version = "3.11"
+
+[scripts]
+start_rmq = "docker start local-rabbitmq"
+start_server = "docker-compose -f ./dev_scripts/docker/docker-compose.yml up"
+stop_server = "docker-compose -f ./dev_scripts/docker/docker-compose.yml stop"
+dc_down = "docker-compose -f ./dev_scripts/docker/docker-compose.yml down"
+db_browser = "sh dev_scripts/utils/open_database.sh"
+dc_down_v = "docker-compose -f ./dev_scripts/docker/docker-compose.yml down -v"
